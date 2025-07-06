@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDownIcon, ChevronUpIcon, CheckCircleIcon, StarIcon, PhoneIcon, MailIcon, MapPinIcon, MenuIcon, XIcon } from '@heroicons/react/24/solid';
+import { 
+  ChevronDownIcon, 
+  ChevronUpIcon, 
+  CheckCircleIcon, 
+  StarIcon, 
+  PhoneIcon, 
+  EnvelopeIcon as MailIcon, 
+  MapPinIcon, 
+  Bars3Icon as MenuIcon, 
+  XMarkIcon as XIcon 
+} from '@heroicons/react/24/solid';
 import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
 import { 
