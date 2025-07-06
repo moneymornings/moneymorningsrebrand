@@ -23,7 +23,14 @@ import {
   RocketLaunchIcon,
   BanknotesIcon,
   PresentationChartLineIcon,
-  BuildingOfficeIcon
+  BuildingOfficeIcon,
+  UserIcon,
+  CreditCardIcon,
+  BuildingOffice2Icon,
+  GlobeAltIcon,
+  DevicePhoneMobileIcon,
+  ComputerDesktopIcon,
+  ShareIcon
 } from '@heroicons/react/24/solid';
 
 // Navigation Bar Component
@@ -44,12 +51,13 @@ export const NavigationBar = ({ isMenuOpen, setIsMenuOpen, scrolled, scrollToSec
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
-            <div className="flex-shrink-0">
+            <div className="flex items-center space-x-3">
               <img 
                 src="https://customer-assets.emergentagent.com/job_funding-expert/artifacts/m82iu1j9_MONEYMORNINGSCOLOR%20copy.png" 
                 alt="Money Mornings" 
                 className="h-12 w-auto"
               />
+              <span className="text-xl font-bold text-gray-900">Money Mornings Empire</span>
             </div>
           </div>
           
@@ -140,7 +148,7 @@ export const HeroSection = ({ setIsApplicationModalOpen }) => {
             </h1>
             
             <p className="text-xl text-gray-600 mb-8 max-w-2xl">
-              Transform your business with our proven funding strategies. From $50K to $300K in just 10-15 business days, plus comprehensive consulting services.
+              Transform your business with our proven funding strategies. Secure up to 300k in as little as 15 days, and take advantage of our comprehensive consulting services.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -163,11 +171,11 @@ export const HeroSection = ({ setIsApplicationModalOpen }) => {
             <div className="flex items-center space-x-8 text-sm text-gray-500">
               <div className="flex items-center">
                 <CheckCircleIcon className="h-5 w-5 text-green-500 mr-2" />
-                No Credit Check Required
+                Soft Pull Credit Check
               </div>
               <div className="flex items-center">
                 <CheckCircleIcon className="h-5 w-5 text-green-500 mr-2" />
-                10-15 Day Approval
+                15 Day Approval
               </div>
             </div>
           </motion.div>
@@ -184,15 +192,15 @@ export const HeroSection = ({ setIsApplicationModalOpen }) => {
                 <div className="bg-blue-100 rounded-full p-4 w-16 h-16 flex items-center justify-center mb-4">
                   <BanknotesIcon className="h-8 w-8 text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">$50K-$300K</h3>
-                <p className="text-gray-600">Funding Range</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Up to $300K</h3>
+                <p className="text-gray-600">Funding Available</p>
               </div>
               
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 mt-8">
                 <div className="bg-green-100 rounded-full p-4 w-16 h-16 flex items-center justify-center mb-4">
                   <ClockIcon className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">10-15 Days</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">15 Days</h3>
                 <p className="text-gray-600">Fast Approval</p>
               </div>
               
@@ -227,21 +235,21 @@ export const ServicesSection = () => {
       description: "Fast-track your business to 6 figures with our proven funding strategies",
       icon: <CurrencyDollarIcon className="h-8 w-8" />,
       color: "blue",
-      features: ["$50K - $300K funding range", "10-15 business day approval", "Multiple funding sources", "No collateral required"]
+      features: ["Up to $300K funding available", "15 day approval process", "Multiple funding sources", "Soft pull credit check"]
     },
     {
       title: "Business Consulting",
-      description: "Comprehensive brand development and strategic consulting services",
+      description: "Comprehensive business establishment and development services",
       icon: <LightBulbIcon className="h-8 w-8" />,
       color: "green",
-      features: ["Brand development", "Creative consulting", "Content production", "Monetization strategies"]
+      features: ["Business EIN establishment", "Business Formation", "Business Address", "Website Development"]
     },
     {
-      title: "Financial Planning",
-      description: "Strategic financial planning to optimize your business growth trajectory",
-      icon: <ChartBarIcon className="h-8 w-8" />,
+      title: "Personal Funding",
+      description: "Personal funding solutions to support your financial goals",
+      icon: <UserIcon className="h-8 w-8" />,
       color: "purple",
-      features: ["Cash flow analysis", "Growth planning", "Risk assessment", "Financial optimization"]
+      features: ["Up to $300K funding available", "15 day approval process", "Multiple funding sources", "Soft pull credit check"]
     }
   ];
 
@@ -309,46 +317,56 @@ export const ServicesSection = () => {
 export const FundingSection = ({ setIsApplicationModalOpen }) => {
   const fundingPackages = [
     {
-      title: "Starter Package",
-      range: "$50K - $100K",
-      description: "Perfect for small businesses getting started",
+      title: "Business Establishment",
+      price: "$497",
+      description: "Essential business setup package",
       features: [
-        "Basic funding application",
-        "Document preparation",
-        "Initial consultation",
-        "Funding source identification",
-        "Application submission"
+        "EIN",
+        "LLC"
       ],
       highlight: false,
-      color: "blue"
+      color: "blue",
+      note: "Annual fees not included"
     },
     {
-      title: "Professional Package",
-      range: "$100K - $200K",
-      description: "Most popular choice for growing businesses",
+      title: "Business Builders Package",
+      price: "$1,997",
+      description: "Comprehensive business development package",
       features: [
-        "Advanced funding strategies",
-        "Multiple funding sources",
-        "Personal credit optimization",
-        "Business credit building",
-        "Ongoing support"
+        "EIN & LLC",
+        "411 + Other Directories",
+        "Dun & Bradstreet",
+        "Experian Registration",
+        "Business Address",
+        "Business Email",
+        "Business Phone Number",
+        "Professional Website",
+        "Social Media Establishment"
       ],
       highlight: true,
-      color: "green"
+      color: "green",
+      note: "Monthly and annual fees not included"
     },
     {
-      title: "Enterprise Package",
-      range: "$200K - $300K",
-      description: "Comprehensive solution for established businesses",
+      title: "The Optimum Funding Package",
+      price: "$7,500",
+      description: "Premium funding and business setup",
       features: [
-        "Comprehensive funding program",
-        "Business plan development",
-        "Financial projections",
-        "Investor pitch preparation",
-        "Premium support"
+        "Done For You Credit Building",
+        "EIN & LLC",
+        "411 + Other Directories",
+        "Dun & Bradstreet",
+        "Experian Registration",
+        "Professional Logo",
+        "Business Address",
+        "Business Email",
+        "Business Phone Number",
+        "Professional Website",
+        "Social Media Establishment"
       ],
       highlight: false,
-      color: "purple"
+      color: "purple",
+      note: "Monthly and annual fees not included. Graduates to basic funding program"
     }
   ];
 
@@ -362,18 +380,18 @@ export const FundingSection = ({ setIsApplicationModalOpen }) => {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            Funding Packages
+            Business Essential Services
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Choose Your
-            <span className="text-green-500 block">Funding Package</span>
+            <span className="text-green-500 block">Business Package</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Select the funding package that best fits your business needs and growth goals
+            Select the business setup package that best fits your needs and growth goals
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {fundingPackages.map((pkg, index) => (
             <motion.div
               key={index}
@@ -397,10 +415,13 @@ export const FundingSection = ({ setIsApplicationModalOpen }) => {
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
                 <p className={`text-4xl font-bold mb-2 ${pkg.highlight ? 'text-white' : 'text-green-500'}`}>
-                  {pkg.range}
+                  {pkg.price}
                 </p>
-                <p className={`text-sm ${pkg.highlight ? 'text-green-100' : 'text-gray-600'}`}>
+                <p className={`text-sm ${pkg.highlight ? 'text-green-100' : 'text-gray-600'} mb-4`}>
                   {pkg.description}
+                </p>
+                <p className={`text-xs ${pkg.highlight ? 'text-green-200' : 'text-gray-500'}`}>
+                  {pkg.note}
                 </p>
               </div>
               
@@ -428,6 +449,151 @@ export const FundingSection = ({ setIsApplicationModalOpen }) => {
             </motion.div>
           ))}
         </div>
+
+        {/* Additional Packages */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Diamond Package */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
+          >
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold mb-2">The Diamond Funding Package</h3>
+              <p className="text-4xl font-bold text-blue-500 mb-2">$10,000</p>
+              <p className="text-sm text-gray-600 mb-2">Premium business credit solution</p>
+              <p className="text-xs text-gray-500">Monthly and annual fees not included. Graduates to basic funding program</p>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Done For You Business Credit Building</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Done For You Credit Building</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">EIN & LLC</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">411 + Other Directories</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Professional Logo</span>
+                </li>
+              </ul>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Business Address</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Business Email</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Business Phone Number</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Professional Website</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Social Media Establishment</span>
+                </li>
+              </ul>
+            </div>
+            
+            <button
+              onClick={() => setIsApplicationModalOpen(true)}
+              className="w-full bg-blue-500 text-white py-4 px-6 rounded-full font-semibold hover:bg-blue-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Get Started
+            </button>
+          </motion.div>
+
+          {/* Ultimate Package */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
+          >
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold mb-2">The Ultimate Funding Package</h3>
+              <p className="text-4xl font-bold text-purple-500 mb-2">$15,000</p>
+              <p className="text-sm text-gray-600 mb-2">Complete business solution</p>
+              <p className="text-xs text-gray-500">Monthly and annual fees not included. Graduates to basic funding program</p>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Done For You Business Credit Building</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Done For You Credit Building</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">EIN & LLC</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">411 + Other Directories</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Professional Logo</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Business Vehicle</span>
+                </li>
+              </ul>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Business Address</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Business Email</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Business Phone Number</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Professional Website</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+                  <span className="text-sm">Social Media Establishment</span>
+                </li>
+              </ul>
+            </div>
+            
+            <button
+              onClick={() => setIsApplicationModalOpen(true)}
+              className="w-full bg-purple-500 text-white py-4 px-6 rounded-full font-semibold hover:bg-purple-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Get Started
+            </button>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -437,52 +603,52 @@ export const FundingSection = ({ setIsApplicationModalOpen }) => {
 export const ConsultingSection = () => {
   const consultingServices = [
     {
-      title: "Brand Development",
-      description: "Complete brand identity creation and development",
-      icon: <TrophyIcon className="h-6 w-6" />,
-      color: "purple",
-      features: [
-        "Brand strategy development",
-        "Logo and visual identity",
-        "Brand guidelines creation",
-        "Market positioning"
-      ]
-    },
-    {
-      title: "Creative Consulting",
-      description: "Strategic creative direction for your business",
-      icon: <LightBulbIcon className="h-6 w-6" />,
-      color: "orange",
-      features: [
-        "Creative strategy",
-        "Campaign development",
-        "Content planning",
-        "Digital asset creation"
-      ]
-    },
-    {
-      title: "Content Production",
-      description: "High-quality content creation and production",
+      title: "Business EIN Establishment",
+      description: "Get your federal tax identification number",
       icon: <DocumentTextIcon className="h-6 w-6" />,
-      color: "green",
-      features: [
-        "Video production",
-        "Content creation",
-        "Social media content",
-        "Marketing materials"
-      ]
+      color: "blue"
     },
     {
-      title: "Business Strategy",
-      description: "Comprehensive business development planning",
-      icon: <ChartBarIcon className="h-6 w-6" />,
-      color: "blue",
-      features: [
-        "Business planning",
-        "Growth strategies",
-        "Market analysis",
-        "Competitive positioning"
-      ]
+      title: "Business Formation",
+      description: "LLC, Corporation, and other entity setup",
+      icon: <BuildingOffice2Icon className="h-6 w-6" />,
+      color: "green"
+    },
+    {
+      title: "Business Address",
+      description: "Professional mailing and business address",
+      icon: <MapPinIcon className="h-6 w-6" />,
+      color: "purple"
+    },
+    {
+      title: "Business Email",
+      description: "Professional email setup and configuration",
+      icon: <MailIcon className="h-6 w-6" />,
+      color: "orange"
+    },
+    {
+      title: "Business Phone",
+      description: "Dedicated business phone line setup",
+      icon: <DevicePhoneMobileIcon className="h-6 w-6" />,
+      color: "blue"
+    },
+    {
+      title: "Online Directory Placement",
+      description: "411, Dun & Bradstreet, Experian registration",
+      icon: <GlobeAltIcon className="h-6 w-6" />,
+      color: "green"
+    },
+    {
+      title: "Website Development",
+      description: "Professional website design and development",
+      icon: <ComputerDesktopIcon className="h-6 w-6" />,
+      color: "purple"
+    },
+    {
+      title: "Social Media Establishment",
+      description: "Social media profiles and business presence",
+      icon: <ShareIcon className="h-6 w-6" />,
+      color: "orange"
     }
   ];
 
@@ -509,11 +675,11 @@ export const ConsultingSection = () => {
             Business Consulting
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Transform Your Business
-            <span className="text-blue-500 block">with Expert Consulting</span>
+            Complete Business
+            <span className="text-blue-500 block">Setup Services</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive consulting services to establish, expand, and monetize your business potential
+            Everything you need to establish and legitimize your business presence
           </p>
         </motion.div>
         
@@ -529,18 +695,101 @@ export const ConsultingSection = () => {
               <div className={`rounded-full p-3 w-12 h-12 flex items-center justify-center mb-4 ${getColorClasses(service.color)}`}>
                 {service.icon}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-              <p className="text-gray-600 text-sm mb-4">{service.description}</p>
-              <ul className="space-y-2">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-700">
-                    <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">{service.title}</h3>
+              <p className="text-gray-600 text-sm">{service.description}</p>
             </motion.div>
           ))}
+        </div>
+
+        {/* Additional Services Section */}
+        <div className="mt-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Business Credit Services */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Business Credit Services</h3>
+              <div className="bg-white rounded-xl p-6 shadow-lg">
+                <h4 className="text-xl font-semibold mb-2">Done For You Business Credit Building</h4>
+                <p className="text-2xl font-bold text-green-500 mb-2">Starting at $2,500</p>
+                <p className="text-sm text-gray-600 mb-4">Monthly and annual fees not included</p>
+                <ul className="space-y-2">
+                  <li className="flex items-center text-sm">
+                    <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2" />
+                    Various Net 30 vendor accounts
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2" />
+                    Business Credit Builder Accounts
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2" />
+                    Primary Business Accounts
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* Funding Services */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Funding Services</h3>
+              <div className="bg-white rounded-xl p-6 shadow-lg">
+                <h4 className="text-xl font-semibold mb-2">Basic Funding Program</h4>
+                <div className="flex items-center space-x-4 mb-4">
+                  <div>
+                    <p className="text-lg font-bold text-blue-500">$99</p>
+                    <p className="text-xs text-gray-600">Filing Fee</p>
+                  </div>
+                  <div>
+                    <p className="text-lg font-bold text-blue-500">10%</p>
+                    <p className="text-xs text-gray-600">Success Fee</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <ul className="space-y-2">
+                    <li className="flex items-center text-sm">
+                      <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2" />
+                      Personal Funding
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2" />
+                      Business Funding
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2" />
+                      Credit Cards
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2" />
+                      $50K - $250K +
+                    </li>
+                  </ul>
+                  <ul className="space-y-2">
+                    <li className="flex items-center text-sm">
+                      <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2" />
+                      Loans
+                    </li>
+                    <li className="flex items-center text-sm">
+                      <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2" />
+                      Lines of Credit
+                    </li>
+                    <li className="flex items-center text-sm text-gray-600">
+                      <CheckCircleIcon className="h-4 w-4 text-orange-500 mr-2" />
+                      Certain Credit Requirements Apply
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
@@ -562,13 +811,13 @@ export const ProcessSection = () => {
     },
     {
       step: "03",
-      title: "Funding Application",
-      description: "We submit your application to our extensive network of funding sources."
+      title: "Business Setup",
+      description: "We handle the complete business establishment process including EIN, LLC, and more."
     },
     {
       step: "04",
-      title: "Approval & Funding",
-      description: "Receive approval and access your funding within 10-15 business days."
+      title: "Funding & Support",
+      description: "Receive funding approval and ongoing support for your business growth."
     }
   ];
 
@@ -589,7 +838,7 @@ export const ProcessSection = () => {
             <span className="text-purple-500 block">Process</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Get your business funded quickly with our proven 4-step process
+            Get your business established and funded with our proven 4-step process
           </p>
         </motion.div>
         
@@ -660,7 +909,7 @@ export const TestimonialsSection = () => {
             <span className="text-green-400 block">Say About Us</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Real testimonials from businesses we've helped secure funding and grow
+            Real testimonials from businesses we've helped establish and fund
           </p>
         </motion.div>
         
@@ -715,7 +964,7 @@ export const ContactSection = () => {
             <span className="text-green-500 block">Started?</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Contact us today to discuss your funding needs and take the first step toward business growth
+            Contact us today to discuss your business establishment and funding needs
           </p>
         </motion.div>
         
@@ -797,7 +1046,7 @@ export const ContactSection = () => {
                 <textarea 
                   rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  placeholder="Tell us about your funding needs..."
+                  placeholder="Tell us about your business needs..."
                 />
               </div>
               <button
@@ -821,22 +1070,25 @@ export const FooterSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <img 
-              src="https://customer-assets.emergentagent.com/job_funding-expert/artifacts/m82iu1j9_MONEYMORNINGSCOLOR%20copy.png" 
-              alt="Money Mornings" 
-              className="h-12 w-auto mb-4"
-            />
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_funding-expert/artifacts/m82iu1j9_MONEYMORNINGSCOLOR%20copy.png" 
+                alt="Money Mornings" 
+                className="h-12 w-auto"
+              />
+              <span className="text-lg font-bold">Money Mornings Empire</span>
+            </div>
             <p className="text-gray-400 max-w-sm">
-              Fast-track your business to success with our comprehensive funding and consulting services.
+              Transform your business with our comprehensive funding and business establishment services.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-4">Services</h4>
             <ul className="space-y-2 text-gray-400">
               <li className="hover:text-white transition-colors cursor-pointer">Business Funding</li>
-              <li className="hover:text-white transition-colors cursor-pointer">Brand Development</li>
-              <li className="hover:text-white transition-colors cursor-pointer">Creative Consulting</li>
-              <li className="hover:text-white transition-colors cursor-pointer">Content Production</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Business Formation</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Business Credit</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Personal Funding</li>
             </ul>
           </div>
           <div>
@@ -858,7 +1110,7 @@ export const FooterSection = () => {
           </div>
         </div>
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 Money Mornings. All rights reserved.</p>
+          <p>&copy; 2025 Money Mornings Empire. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -913,7 +1165,7 @@ export const ApplicationModal = ({ isOpen, onClose }) => {
           >
             <div className="p-8">
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold text-gray-900">Apply for Funding</h2>
+                <h2 className="text-3xl font-bold text-gray-900">Apply for Services</h2>
                 <button
                   onClick={onClose}
                   className="text-gray-500 hover:text-gray-700 p-2"
@@ -984,10 +1236,10 @@ export const ApplicationModal = ({ isOpen, onClose }) => {
               
               {step === 2 && (
                 <div>
-                  <h3 className="text-xl font-semibold mb-6 text-gray-900">Business Information</h3>
+                  <h3 className="text-xl font-semibold mb-6 text-gray-900">Service Information</h3>
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Business Name</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Business Name (if applicable)</label>
                       <input
                         type="text"
                         name="businessName"
@@ -998,22 +1250,26 @@ export const ApplicationModal = ({ isOpen, onClose }) => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Business Type</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
                       <select
                         name="businessType"
                         value={formData.businessType}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                       >
-                        <option value="">Select Business Type</option>
-                        <option value="llc">LLC</option>
-                        <option value="corporation">Corporation</option>
-                        <option value="partnership">Partnership</option>
-                        <option value="sole-proprietorship">Sole Proprietorship</option>
+                        <option value="">Select Service</option>
+                        <option value="business-establishment">Business Establishment</option>
+                        <option value="business-builders">Business Builders Package</option>
+                        <option value="optimum-funding">Optimum Funding Package</option>
+                        <option value="diamond-funding">Diamond Funding Package</option>
+                        <option value="ultimate-funding">Ultimate Funding Package</option>
+                        <option value="business-credit">Business Credit Services</option>
+                        <option value="funding-program">Basic Funding Program</option>
+                        <option value="custom">Custom Package</option>
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Funding Amount Needed</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Funding Amount Needed (if applicable)</label>
                       <select
                         name="fundingAmount"
                         value={formData.fundingAmount}
@@ -1024,10 +1280,11 @@ export const ApplicationModal = ({ isOpen, onClose }) => {
                         <option value="50k-100k">$50K - $100K</option>
                         <option value="100k-200k">$100K - $200K</option>
                         <option value="200k-300k">$200K - $300K</option>
+                        <option value="300k+">$300K+</option>
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Time in Business</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Time in Business (if applicable)</label>
                       <select
                         name="timeInBusiness"
                         value={formData.timeInBusiness}
@@ -1039,6 +1296,7 @@ export const ApplicationModal = ({ isOpen, onClose }) => {
                         <option value="1-2years">1-2 Years</option>
                         <option value="2-5years">2-5 Years</option>
                         <option value="5+years">5+ Years</option>
+                        <option value="new-business">New Business Formation</option>
                       </select>
                     </div>
                   </div>
