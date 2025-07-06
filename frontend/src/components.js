@@ -17,7 +17,13 @@ import {
   UserGroupIcon,
   DocumentTextIcon,
   TrophyIcon,
-  ShieldCheckIcon
+  ShieldCheckIcon,
+  ArrowRightIcon,
+  PlayIcon,
+  RocketLaunchIcon,
+  BanknotesIcon,
+  PresentationChartLineIcon,
+  BuildingOfficeIcon
 } from '@heroicons/react/24/solid';
 
 // Navigation Bar Component
@@ -33,30 +39,34 @@ export const NavigationBar = ({ isMenuOpen, setIsMenuOpen, scrolled, scrollToSec
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white shadow-lg' : 'bg-white/90 backdrop-blur-md'
+      scrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-md'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-blue-900">Money Mornings</h1>
+              <img 
+                src="https://customer-assets.emergentagent.com/job_funding-expert/artifacts/m82iu1j9_MONEYMORNINGSCOLOR%20copy.png" 
+                alt="Money Mornings" 
+                className="h-12 w-auto"
+              />
             </div>
           </div>
           
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   {item.name}
                 </button>
               ))}
               <button
                 onClick={() => setIsApplicationModalOpen(true)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors"
+                className="bg-green-500 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-600 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 Apply Now
               </button>
@@ -66,7 +76,7 @@ export const NavigationBar = ({ isMenuOpen, setIsMenuOpen, scrolled, scrollToSec
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600"
+              className="text-gray-700 hover:text-gray-900 focus:outline-none"
             >
               {isMenuOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
             </button>
@@ -80,21 +90,21 @@ export const NavigationBar = ({ isMenuOpen, setIsMenuOpen, scrolled, scrollToSec
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-200"
+            className="md:hidden bg-white border-t border-gray-200 shadow-lg"
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                  className="block w-full text-left px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                 >
                   {item.name}
                 </button>
               ))}
               <button
                 onClick={() => setIsApplicationModalOpen(true)}
-                className="block w-full text-left bg-blue-600 text-white px-3 py-2 rounded-md text-base font-medium hover:bg-blue-700 mt-2"
+                className="block w-full text-left bg-green-500 text-white px-3 py-3 rounded-full text-base font-semibold hover:bg-green-600 mt-2"
               >
                 Apply Now
               </button>
@@ -109,66 +119,101 @@ export const NavigationBar = ({ isMenuOpen, setIsMenuOpen, scrolled, scrollToSec
 // Hero Section Component
 export const HeroSection = ({ setIsApplicationModalOpen }) => {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1599090738077-75d2187fd892?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMHN1Y2Nlc3N8ZW58MHx8fGJsdWV8MTc1MTgxNjAwNHww&ixlib=rb-4.1.0&q=85')`
-        }}
-      />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Get Business Funding
-            <span className="text-green-400"> in Minutes</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-            Fast-track your business to 6 figures in funding. From $50K to $300K in just 10-15 business days.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => setIsApplicationModalOpen(true)}
-              className="bg-green-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors transform hover:scale-105"
-            >
-              Get Pre-Qualified
-            </button>
-            <button
-              onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
-              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors"
-            >
-              Learn More
-            </button>
-          </div>
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
-        >
-          <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 text-white">
-            <ClockIcon className="h-8 w-8 text-green-400 mb-4 mx-auto" />
-            <h3 className="text-lg font-semibold mb-2">Fast Approval</h3>
-            <p className="text-sm">Get approved in 10-15 business days</p>
-          </div>
-          <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 text-white">
-            <CurrencyDollarIcon className="h-8 w-8 text-green-400 mb-4 mx-auto" />
-            <h3 className="text-lg font-semibold mb-2">$50K - $300K</h3>
-            <p className="text-sm">Funding range for your business needs</p>
-          </div>
-          <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 text-white">
-            <ShieldCheckIcon className="h-8 w-8 text-green-400 mb-4 mx-auto" />
-            <h3 className="text-lg font-semibold mb-2">Trusted Process</h3>
-            <p className="text-sm">Proven track record of success</p>
-          </div>
-        </motion.div>
+    <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-white pt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-left"
+          >
+            <div className="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <RocketLaunchIcon className="h-4 w-4 mr-2" />
+              Fast-Track Your Business Growth
+            </div>
+            
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              Get Business Funding
+              <span className="text-green-500 block">in Minutes</span>
+            </h1>
+            
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl">
+              Transform your business with our proven funding strategies. From $50K to $300K in just 10-15 business days, plus comprehensive consulting services.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <button
+                onClick={() => setIsApplicationModalOpen(true)}
+                className="bg-green-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-600 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center"
+              >
+                Get Pre-Qualified
+                <ArrowRightIcon className="h-5 w-5 ml-2" />
+              </button>
+              <button
+                onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
+                className="bg-white border-2 border-gray-200 text-gray-800 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-50 transition-all flex items-center justify-center"
+              >
+                <PlayIcon className="h-5 w-5 mr-2" />
+                Learn More
+              </button>
+            </div>
+            
+            <div className="flex items-center space-x-8 text-sm text-gray-500">
+              <div className="flex items-center">
+                <CheckCircleIcon className="h-5 w-5 text-green-500 mr-2" />
+                No Credit Check Required
+              </div>
+              <div className="flex items-center">
+                <CheckCircleIcon className="h-5 w-5 text-green-500 mr-2" />
+                10-15 Day Approval
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* Right Content - Stats Cards */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="grid grid-cols-2 gap-6">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div className="bg-blue-100 rounded-full p-4 w-16 h-16 flex items-center justify-center mb-4">
+                  <BanknotesIcon className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">$50K-$300K</h3>
+                <p className="text-gray-600">Funding Range</p>
+              </div>
+              
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 mt-8">
+                <div className="bg-green-100 rounded-full p-4 w-16 h-16 flex items-center justify-center mb-4">
+                  <ClockIcon className="h-8 w-8 text-green-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">10-15 Days</h3>
+                <p className="text-gray-600">Fast Approval</p>
+              </div>
+              
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 -mt-4">
+                <div className="bg-purple-100 rounded-full p-4 w-16 h-16 flex items-center justify-center mb-4">
+                  <PresentationChartLineIcon className="h-8 w-8 text-purple-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">98%</h3>
+                <p className="text-gray-600">Success Rate</p>
+              </div>
+              
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 mt-4">
+                <div className="bg-orange-100 rounded-full p-4 w-16 h-16 flex items-center justify-center mb-4">
+                  <BuildingOfficeIcon className="h-8 w-8 text-orange-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">500+</h3>
+                <p className="text-gray-600">Businesses Funded</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -179,26 +224,38 @@ export const ServicesSection = () => {
   const services = [
     {
       title: "Business Funding",
-      description: "Fast-track your business to 6 figures in funding with our proven process",
-      icon: <CurrencyDollarIcon className="h-12 w-12 text-blue-600" />,
-      features: ["$50K - $300K funding range", "10-15 business day approval", "Multiple funding options", "No collateral required"]
+      description: "Fast-track your business to 6 figures with our proven funding strategies",
+      icon: <CurrencyDollarIcon className="h-8 w-8" />,
+      color: "blue",
+      features: ["$50K - $300K funding range", "10-15 business day approval", "Multiple funding sources", "No collateral required"]
     },
     {
       title: "Business Consulting",
-      description: "Comprehensive brand development and creative consulting services",
-      icon: <LightBulbIcon className="h-12 w-12 text-green-600" />,
+      description: "Comprehensive brand development and strategic consulting services",
+      icon: <LightBulbIcon className="h-8 w-8" />,
+      color: "green",
       features: ["Brand development", "Creative consulting", "Content production", "Monetization strategies"]
     },
     {
       title: "Financial Planning",
-      description: "Strategic financial planning to optimize your business growth",
-      icon: <ChartBarIcon className="h-12 w-12 text-purple-600" />,
+      description: "Strategic financial planning to optimize your business growth trajectory",
+      icon: <ChartBarIcon className="h-8 w-8" />,
+      color: "purple",
       features: ["Cash flow analysis", "Growth planning", "Risk assessment", "Financial optimization"]
     }
   ];
 
+  const getColorClasses = (color) => {
+    const colors = {
+      blue: "bg-blue-100 text-blue-600",
+      green: "bg-green-100 text-green-600",
+      purple: "bg-purple-100 text-purple-600"
+    };
+    return colors[color] || colors.blue;
+  };
+
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -206,9 +263,15 @@ export const ServicesSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+          <div className="inline-flex items-center bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            Our Services
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Everything You Need to
+            <span className="text-green-500 block">Grow Your Business</span>
+          </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive financial and consulting services designed to accelerate your business growth
+            From funding to consulting, we provide comprehensive solutions designed to accelerate your business growth
           </p>
         </motion.div>
         
@@ -219,18 +282,18 @@ export const ServicesSection = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow"
+              className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="text-center mb-6">
+              <div className={`rounded-full p-4 w-16 h-16 flex items-center justify-center mb-6 ${getColorClasses(service.color)}`}>
                 {service.icon}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">{service.title}</h3>
-              <p className="text-gray-600 mb-6 text-center">{service.description}</p>
-              <ul className="space-y-2">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+              <p className="text-gray-600 mb-6">{service.description}</p>
+              <ul className="space-y-3">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-700">
-                    <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                    {feature}
+                  <li key={featureIndex} className="flex items-center text-gray-700">
+                    <CheckCircleIcon className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
+                    <span className="text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -248,6 +311,7 @@ export const FundingSection = ({ setIsApplicationModalOpen }) => {
     {
       title: "Starter Package",
       range: "$50K - $100K",
+      description: "Perfect for small businesses getting started",
       features: [
         "Basic funding application",
         "Document preparation",
@@ -255,11 +319,13 @@ export const FundingSection = ({ setIsApplicationModalOpen }) => {
         "Funding source identification",
         "Application submission"
       ],
-      highlight: false
+      highlight: false,
+      color: "blue"
     },
     {
       title: "Professional Package",
       range: "$100K - $200K",
+      description: "Most popular choice for growing businesses",
       features: [
         "Advanced funding strategies",
         "Multiple funding sources",
@@ -267,11 +333,13 @@ export const FundingSection = ({ setIsApplicationModalOpen }) => {
         "Business credit building",
         "Ongoing support"
       ],
-      highlight: true
+      highlight: true,
+      color: "green"
     },
     {
       title: "Enterprise Package",
       range: "$200K - $300K",
+      description: "Comprehensive solution for established businesses",
       features: [
         "Comprehensive funding program",
         "Business plan development",
@@ -279,12 +347,13 @@ export const FundingSection = ({ setIsApplicationModalOpen }) => {
         "Investor pitch preparation",
         "Premium support"
       ],
-      highlight: false
+      highlight: false,
+      color: "purple"
     }
   ];
 
   return (
-    <section id="funding" className="py-20 bg-gray-50">
+    <section id="funding" className="py-24 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -292,9 +361,15 @@ export const FundingSection = ({ setIsApplicationModalOpen }) => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Funding Packages</h2>
+          <div className="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            Funding Packages
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Choose Your
+            <span className="text-green-500 block">Funding Package</span>
+          </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Choose the funding package that best fits your business needs
+            Select the funding package that best fits your business needs and growth goals
           </p>
         </motion.div>
         
@@ -305,16 +380,27 @@ export const FundingSection = ({ setIsApplicationModalOpen }) => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className={`rounded-xl p-8 ${
+              className={`rounded-2xl p-8 ${
                 pkg.highlight 
-                  ? 'bg-blue-600 text-white transform scale-105 shadow-xl' 
-                  : 'bg-white text-gray-900 shadow-lg'
-              } hover:shadow-xl transition-all`}
+                  ? 'bg-green-500 text-white transform scale-105 shadow-2xl border-2 border-green-400' 
+                  : 'bg-white text-gray-900 shadow-lg border border-gray-100'
+              } hover:shadow-xl transition-all duration-300`}
             >
+              {pkg.highlight && (
+                <div className="text-center mb-4">
+                  <span className="bg-white text-green-500 px-4 py-1 rounded-full text-sm font-semibold">
+                    Most Popular
+                  </span>
+                </div>
+              )}
+              
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
-                <p className={`text-3xl font-bold ${pkg.highlight ? 'text-green-300' : 'text-blue-600'}`}>
+                <p className={`text-4xl font-bold mb-2 ${pkg.highlight ? 'text-white' : 'text-green-500'}`}>
                   {pkg.range}
+                </p>
+                <p className={`text-sm ${pkg.highlight ? 'text-green-100' : 'text-gray-600'}`}>
+                  {pkg.description}
                 </p>
               </div>
               
@@ -322,7 +408,7 @@ export const FundingSection = ({ setIsApplicationModalOpen }) => {
                 {pkg.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start">
                     <CheckCircleIcon className={`h-5 w-5 mr-3 mt-0.5 ${
-                      pkg.highlight ? 'text-green-300' : 'text-green-500'
+                      pkg.highlight ? 'text-green-200' : 'text-green-500'
                     }`} />
                     <span className="text-sm">{feature}</span>
                   </li>
@@ -331,11 +417,11 @@ export const FundingSection = ({ setIsApplicationModalOpen }) => {
               
               <button
                 onClick={() => setIsApplicationModalOpen(true)}
-                className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors ${
+                className={`w-full py-4 px-6 rounded-full font-semibold transition-all ${
                   pkg.highlight
-                    ? 'bg-white text-blue-600 hover:bg-gray-100'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
-                }`}
+                    ? 'bg-white text-green-500 hover:bg-gray-100'
+                    : 'bg-green-500 text-white hover:bg-green-600'
+                } shadow-lg hover:shadow-xl transform hover:-translate-y-0.5`}
               >
                 Get Started
               </button>
@@ -353,7 +439,8 @@ export const ConsultingSection = () => {
     {
       title: "Brand Development",
       description: "Complete brand identity creation and development",
-      icon: <TrophyIcon className="h-8 w-8 text-purple-600" />,
+      icon: <TrophyIcon className="h-6 w-6" />,
+      color: "purple",
       features: [
         "Brand strategy development",
         "Logo and visual identity",
@@ -364,7 +451,8 @@ export const ConsultingSection = () => {
     {
       title: "Creative Consulting",
       description: "Strategic creative direction for your business",
-      icon: <LightBulbIcon className="h-8 w-8 text-orange-600" />,
+      icon: <LightBulbIcon className="h-6 w-6" />,
+      color: "orange",
       features: [
         "Creative strategy",
         "Campaign development",
@@ -375,7 +463,8 @@ export const ConsultingSection = () => {
     {
       title: "Content Production",
       description: "High-quality content creation and production",
-      icon: <DocumentTextIcon className="h-8 w-8 text-green-600" />,
+      icon: <DocumentTextIcon className="h-6 w-6" />,
+      color: "green",
       features: [
         "Video production",
         "Content creation",
@@ -386,7 +475,8 @@ export const ConsultingSection = () => {
     {
       title: "Business Strategy",
       description: "Comprehensive business development planning",
-      icon: <ChartBarIcon className="h-8 w-8 text-blue-600" />,
+      icon: <ChartBarIcon className="h-6 w-6" />,
+      color: "blue",
       features: [
         "Business planning",
         "Growth strategies",
@@ -396,8 +486,18 @@ export const ConsultingSection = () => {
     }
   ];
 
+  const getColorClasses = (color) => {
+    const colors = {
+      blue: "bg-blue-100 text-blue-600",
+      green: "bg-green-100 text-green-600",
+      purple: "bg-purple-100 text-purple-600",
+      orange: "bg-orange-100 text-orange-600"
+    };
+    return colors[color] || colors.blue;
+  };
+
   return (
-    <section id="consulting" className="py-20 bg-white">
+    <section id="consulting" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -405,9 +505,15 @@ export const ConsultingSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Business Consulting</h2>
+          <div className="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            Business Consulting
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Transform Your Business
+            <span className="text-blue-500 block">with Expert Consulting</span>
+          </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive consulting services to establish, expand, and monetize your business
+            Comprehensive consulting services to establish, expand, and monetize your business potential
           </p>
         </motion.div>
         
@@ -418,13 +524,13 @@ export const ConsultingSection = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow"
+              className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="text-center mb-4">
+              <div className={`rounded-full p-3 w-12 h-12 flex items-center justify-center mb-4 ${getColorClasses(service.color)}`}>
                 {service.icon}
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3 text-center">{service.title}</h3>
-              <p className="text-gray-600 text-sm mb-4 text-center">{service.description}</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+              <p className="text-gray-600 text-sm mb-4">{service.description}</p>
               <ul className="space-y-2">
                 {service.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-center text-sm text-gray-700">
@@ -447,17 +553,17 @@ export const ProcessSection = () => {
     {
       step: "01",
       title: "Initial Consultation",
-      description: "We discuss your business needs, funding requirements, and growth goals."
+      description: "We discuss your business needs, funding requirements, and growth goals in detail."
     },
     {
       step: "02",
       title: "Document Preparation",
-      description: "We help prepare all necessary documents and optimize your application."
+      description: "Our team helps prepare all necessary documents and optimizes your application."
     },
     {
       step: "03",
       title: "Funding Application",
-      description: "We submit your application to our network of funding sources."
+      description: "We submit your application to our extensive network of funding sources."
     },
     {
       step: "04",
@@ -467,7 +573,7 @@ export const ProcessSection = () => {
   ];
 
   return (
-    <section id="process" className="py-20 bg-blue-50">
+    <section id="process" className="py-24 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -475,9 +581,15 @@ export const ProcessSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Process</h2>
+          <div className="inline-flex items-center bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            Our Process
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Simple, Straightforward
+            <span className="text-purple-500 block">Process</span>
+          </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Simple, straightforward process to get your business funded quickly
+            Get your business funded quickly with our proven 4-step process
           </p>
         </motion.div>
         
@@ -490,11 +602,13 @@ export const ProcessSection = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               className="text-center"
             >
-              <div className="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold mb-6 mx-auto">
-                {step.step}
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                <div className="bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold mb-6 mx-auto">
+                  {step.step}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">{step.title}</h3>
-              <p className="text-gray-600 text-sm">{step.description}</p>
             </motion.div>
           ))}
         </div>
@@ -509,25 +623,28 @@ export const TestimonialsSection = () => {
     {
       name: "Chrystal Anderson",
       company: "Tech Startup",
-      content: "I worked with MME to secure business funding. They were professional and helped me get the funding I needed quickly.",
-      rating: 5
+      content: "I worked with MME to secure business funding. They were professional and helped me get the funding I needed quickly. The process was smooth and efficient.",
+      rating: 5,
+      avatar: "CA"
     },
     {
       name: "Autumn Heyward",
       company: "Creative Agency",
-      content: "Great people to work with. 1000000/10 great service. They delivered exactly what they promised.",
-      rating: 5
+      content: "Great people to work with. 1000000/10 great service. They delivered exactly what they promised and exceeded my expectations.",
+      rating: 5,
+      avatar: "AH"
     },
     {
       name: "Meshia Hamilton",
       company: "Small Business",
-      content: "Best customer service, great business acumen. Totally recommend their services to anyone looking for funding.",
-      rating: 5
+      content: "Best customer service, great business acumen. Totally recommend their services to anyone looking for funding. They made the process seamless.",
+      rating: 5,
+      avatar: "MH"
     }
   ];
 
   return (
-    <section className="py-20 bg-gray-900 text-white">
+    <section className="py-24 bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -535,9 +652,15 @@ export const TestimonialsSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Real testimonials from businesses we've helped secure funding
+          <div className="inline-flex items-center bg-gray-800 text-gray-200 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            Testimonials
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            What Our Clients
+            <span className="text-green-400 block">Say About Us</span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Real testimonials from businesses we've helped secure funding and grow
           </p>
         </motion.div>
         
@@ -548,17 +671,22 @@ export const TestimonialsSection = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-gray-800 rounded-xl p-6"
+              className="bg-gray-800 rounded-2xl p-8 border border-gray-700 hover:border-gray-600 transition-all duration-300"
             >
-              <div className="flex items-center mb-4">
+              <div className="flex items-center mb-6">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <StarIcon key={i} className="h-5 w-5 text-yellow-400" />
                 ))}
               </div>
-              <p className="text-gray-300 mb-4 italic">"{testimonial.content}"</p>
-              <div className="border-t border-gray-700 pt-4">
-                <h4 className="font-semibold">{testimonial.name}</h4>
-                <p className="text-sm text-gray-400">{testimonial.company}</p>
+              <p className="text-gray-300 mb-6 italic leading-relaxed">"{testimonial.content}"</p>
+              <div className="flex items-center">
+                <div className="bg-gradient-to-r from-green-400 to-blue-400 rounded-full w-12 h-12 flex items-center justify-center text-white font-bold text-sm mr-4">
+                  {testimonial.avatar}
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white">{testimonial.name}</h4>
+                  <p className="text-sm text-gray-400">{testimonial.company}</p>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -571,7 +699,7 @@ export const TestimonialsSection = () => {
 // Contact Section Component
 export const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -579,31 +707,53 @@ export const ContactSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+          <div className="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            Get in Touch
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Ready to Get
+            <span className="text-green-500 block">Started?</span>
+          </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to get started? Contact us today to discuss your funding needs
+            Contact us today to discuss your funding needs and take the first step toward business growth
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8"
           >
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
-            <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8">Contact Information</h3>
+            <div className="space-y-6">
               <div className="flex items-center">
-                <PhoneIcon className="h-6 w-6 text-blue-600 mr-3" />
-                <span className="text-gray-700">(555) 123-4567</span>
+                <div className="bg-green-100 rounded-full p-3 mr-4">
+                  <PhoneIcon className="h-6 w-6 text-green-600" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600">Phone</p>
+                  <p className="text-lg font-semibold text-gray-900">(555) 123-4567</p>
+                </div>
               </div>
               <div className="flex items-center">
-                <MailIcon className="h-6 w-6 text-blue-600 mr-3" />
-                <span className="text-gray-700">info@moneymornings.com</span>
+                <div className="bg-blue-100 rounded-full p-3 mr-4">
+                  <MailIcon className="h-6 w-6 text-blue-600" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600">Email</p>
+                  <p className="text-lg font-semibold text-gray-900">info@moneymornings.com</p>
+                </div>
               </div>
               <div className="flex items-center">
-                <MapPinIcon className="h-6 w-6 text-blue-600 mr-3" />
-                <span className="text-gray-700">123 Financial District, Business City, BC 12345</span>
+                <div className="bg-purple-100 rounded-full p-3 mr-4">
+                  <MapPinIcon className="h-6 w-6 text-purple-600" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600">Address</p>
+                  <p className="text-lg font-semibold text-gray-900">123 Financial District<br />Business City, BC 12345</p>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -612,37 +762,47 @@ export const ContactSection = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="bg-gray-50 rounded-xl p-6"
+            className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
           >
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Send us a Message</h3>
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                <input 
-                  type="text" 
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Your Name"
-                />
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
+            <form className="space-y-6">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                  <input 
+                    type="text" 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="John"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                  <input 
+                    type="text" 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="Doe"
+                  />
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                 <input 
                   type="email" 
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="your@email.com"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  placeholder="john@example.com"
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                 <textarea 
                   rows={4}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Your message here..."
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  placeholder="Tell us about your funding needs..."
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                className="w-full bg-green-500 text-white py-4 px-6 rounded-full font-semibold hover:bg-green-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 Send Message
               </button>
@@ -657,43 +817,47 @@ export const ContactSection = () => {
 // Footer Section Component
 export const FooterSection = () => {
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="bg-gray-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-2xl font-bold mb-4">Money Mornings</h3>
-            <p className="text-gray-400">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_funding-expert/artifacts/m82iu1j9_MONEYMORNINGSCOLOR%20copy.png" 
+              alt="Money Mornings" 
+              className="h-12 w-auto mb-4"
+            />
+            <p className="text-gray-400 max-w-sm">
               Fast-track your business to success with our comprehensive funding and consulting services.
             </p>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Services</h4>
+            <h4 className="font-semibold text-lg mb-4">Services</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>Business Funding</li>
-              <li>Brand Development</li>
-              <li>Creative Consulting</li>
-              <li>Content Production</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Business Funding</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Brand Development</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Creative Consulting</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Content Production</li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
+            <h4 className="font-semibold text-lg mb-4">Company</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>About Us</li>
-              <li>Our Process</li>
-              <li>Testimonials</li>
-              <li>Contact</li>
+              <li className="hover:text-white transition-colors cursor-pointer">About Us</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Our Process</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Testimonials</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Contact</li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Legal</h4>
+            <h4 className="font-semibold text-lg mb-4">Legal</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>Privacy Policy</li>
-              <li>Terms of Service</li>
-              <li>Disclaimer</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Privacy Policy</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Terms of Service</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Disclaimer</li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
           <p>&copy; 2025 Money Mornings. All rights reserved.</p>
         </div>
       </div>
@@ -745,14 +909,14 @@ export const ApplicationModal = ({ isOpen, onClose }) => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl"
           >
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-900">Apply for Funding</h2>
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-3xl font-bold text-gray-900">Apply for Funding</h2>
                 <button
                   onClick={onClose}
-                  className="text-gray-500 hover:text-gray-700"
+                  className="text-gray-500 hover:text-gray-700 p-2"
                 >
                   <XIcon className="h-6 w-6" />
                 </button>
@@ -760,46 +924,58 @@ export const ApplicationModal = ({ isOpen, onClose }) => {
               
               {step === 1 && (
                 <div>
-                  <h3 className="text-lg font-semibold mb-4">Personal Information</h3>
+                  <h3 className="text-xl font-semibold mb-6 text-gray-900">Personal Information</h3>
                   <div className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                        <input
+                          type="text"
+                          name="firstName"
+                          placeholder="John"
+                          value={formData.firstName}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                        <input
+                          type="text"
+                          name="lastName"
+                          placeholder="Doe"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
                       <input
-                        type="text"
-                        name="firstName"
-                        placeholder="First Name"
-                        value={formData.firstName}
+                        type="email"
+                        name="email"
+                        placeholder="john@example.com"
+                        value={formData.email}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                      />
-                      <input
-                        type="text"
-                        name="lastName"
-                        placeholder="Last Name"
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                       />
                     </div>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Email Address"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    />
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder="Phone Number"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    />
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="(555) 123-4567"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      />
+                    </div>
                   </div>
                   <button
                     onClick={() => setStep(2)}
-                    className="w-full mt-6 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                    className="w-full mt-8 bg-green-500 text-white py-4 px-6 rounded-full font-semibold hover:bg-green-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
                     Next Step
                   </button>
@@ -808,62 +984,74 @@ export const ApplicationModal = ({ isOpen, onClose }) => {
               
               {step === 2 && (
                 <div>
-                  <h3 className="text-lg font-semibold mb-4">Business Information</h3>
+                  <h3 className="text-xl font-semibold mb-6 text-gray-900">Business Information</h3>
                   <div className="space-y-4">
-                    <input
-                      type="text"
-                      name="businessName"
-                      placeholder="Business Name"
-                      value={formData.businessName}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    />
-                    <select
-                      name="businessType"
-                      value={formData.businessType}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value="">Select Business Type</option>
-                      <option value="llc">LLC</option>
-                      <option value="corporation">Corporation</option>
-                      <option value="partnership">Partnership</option>
-                      <option value="sole-proprietorship">Sole Proprietorship</option>
-                    </select>
-                    <select
-                      name="fundingAmount"
-                      value={formData.fundingAmount}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value="">Funding Amount Needed</option>
-                      <option value="50k-100k">$50K - $100K</option>
-                      <option value="100k-200k">$100K - $200K</option>
-                      <option value="200k-300k">$200K - $300K</option>
-                    </select>
-                    <select
-                      name="timeInBusiness"
-                      value={formData.timeInBusiness}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value="">Time in Business</option>
-                      <option value="startup">Startup (Less than 1 year)</option>
-                      <option value="1-2years">1-2 Years</option>
-                      <option value="2-5years">2-5 Years</option>
-                      <option value="5+years">5+ Years</option>
-                    </select>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Business Name</label>
+                      <input
+                        type="text"
+                        name="businessName"
+                        placeholder="Your Business Name"
+                        value={formData.businessName}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Business Type</label>
+                      <select
+                        name="businessType"
+                        value={formData.businessType}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      >
+                        <option value="">Select Business Type</option>
+                        <option value="llc">LLC</option>
+                        <option value="corporation">Corporation</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="sole-proprietorship">Sole Proprietorship</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Funding Amount Needed</label>
+                      <select
+                        name="fundingAmount"
+                        value={formData.fundingAmount}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      >
+                        <option value="">Select Amount</option>
+                        <option value="50k-100k">$50K - $100K</option>
+                        <option value="100k-200k">$100K - $200K</option>
+                        <option value="200k-300k">$200K - $300K</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Time in Business</label>
+                      <select
+                        name="timeInBusiness"
+                        value={formData.timeInBusiness}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      >
+                        <option value="">Select Time</option>
+                        <option value="startup">Startup (Less than 1 year)</option>
+                        <option value="1-2years">1-2 Years</option>
+                        <option value="2-5years">2-5 Years</option>
+                        <option value="5+years">5+ Years</option>
+                      </select>
+                    </div>
                   </div>
-                  <div className="flex space-x-4 mt-6">
+                  <div className="flex space-x-4 mt-8">
                     <button
                       onClick={() => setStep(1)}
-                      className="flex-1 bg-gray-300 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-400 transition-colors"
+                      className="flex-1 bg-gray-200 text-gray-700 py-4 px-6 rounded-full font-semibold hover:bg-gray-300 transition-all"
                     >
                       Back
                     </button>
                     <button
                       onClick={handleSubmit}
-                      className="flex-1 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                      className="flex-1 bg-green-500 text-white py-4 px-6 rounded-full font-semibold hover:bg-green-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                     >
                       Submit Application
                     </button>
