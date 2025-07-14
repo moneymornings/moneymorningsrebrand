@@ -1,5 +1,6 @@
-from fastapi import FastAPI, APIRouter, HTTPException, Query
+from fastapi import FastAPI, APIRouter, HTTPException, Query, Depends, status
 from fastapi.responses import HTMLResponse
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -14,6 +15,7 @@ import smtplib
 from email.mime.text import MimeText
 from email.mime.multipart import MimeMultipart
 import asyncio
+import secrets
 
 
 ROOT_DIR = Path(__file__).parent
