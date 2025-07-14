@@ -1167,97 +1167,127 @@ export const ApplicationModal = ({ isOpen, onClose }) => {
                 </button>
               </div>
               
-              {step === 1 && (
-                <div>
-                  <h3 className="text-xl font-semibold mb-6 text-gray-900">Personal Information</h3>
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                        <input
-                          type="text"
-                          name="firstName"
-                          placeholder="John"
-                          value={formData.firstName}
-                          onChange={handleInputChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                        <input
-                          type="text"
-                          name="lastName"
-                          placeholder="Doe"
-                          value={formData.lastName}
-                          onChange={handleInputChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="john@example.com"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        placeholder="(555) 123-4567"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      />
-                    </div>
+              {submitSuccess && (
+                <div className="text-center">
+                  <div className="mb-6">
+                    <CheckCircleIcon className="h-16 w-16 text-green-500 mx-auto mb-4" />
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Application Submitted!</h3>
+                    <p className="text-gray-600">
+                      Thank you for your interest in Money Mornings Empire. We'll review your application and get back to you within 24 hours.
+                    </p>
                   </div>
-                  <button
-                    onClick={() => setStep(2)}
-                    className="w-full mt-8 bg-green-500 text-white py-4 px-6 rounded-full font-semibold hover:bg-green-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                  >
-                    Next Step
-                  </button>
                 </div>
               )}
-              
-              {step === 2 && (
-                <div>
-                  <h3 className="text-xl font-semibold mb-6 text-gray-900">Service Information</h3>
-                  <div className="space-y-4">
+
+              {!submitSuccess && (
+                <>
+                  {step === 1 && (
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Business Name (if applicable)</label>
-                      <input
-                        type="text"
-                        name="businessName"
-                        placeholder="Your Business Name"
-                        value={formData.businessName}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
-                      <select
-                        name="businessType"
-                        value={formData.businessType}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      <h3 className="text-xl font-semibold mb-6 text-gray-900">Personal Information</h3>
+                      {submitError && (
+                        <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                          <p className="text-red-700 text-sm">{submitError}</p>
+                        </div>
+                      )}
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                            <input
+                              type="text"
+                              name="firstName"
+                              placeholder="John"
+                              value={formData.firstName}
+                              onChange={handleInputChange}
+                              required
+                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                            <input
+                              type="text"
+                              name="lastName"
+                              placeholder="Doe"
+                              value={formData.lastName}
+                              onChange={handleInputChange}
+                              required
+                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                          <input
+                            type="email"
+                            name="email"
+                            placeholder="john@example.com"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            required
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                          <input
+                            type="tel"
+                            name="phone"
+                            placeholder="(555) 123-4567"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            required
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                          />
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => setStep(2)}
+                        disabled={!formData.firstName || !formData.lastName || !formData.email || !formData.phone}
+                        className="w-full mt-8 bg-green-500 text-white py-4 px-6 rounded-full font-semibold hover:bg-green-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                       >
-                        <option value="">Select Service</option>
-                        <option value="business-establishment">Business Establishment</option>
-                        <option value="business-builders">Business Builders Package</option>
-                        <option value="optimum-funding">Optimum Funding Package</option>
-                        <option value="diamond-funding">Diamond Funding Package</option>
-                        <option value="ultimate-funding">Ultimate Funding Package</option>
-                        <option value="business-credit">Business Credit Services</option>
-                        <option value="funding-program">Basic Funding Program</option>
+                        Next Step
+                      </button>
+                    </div>
+                  )}
+                  
+                  {step === 2 && (
+                    <div>
+                      <h3 className="text-xl font-semibold mb-6 text-gray-900">Service Information</h3>
+                      {submitError && (
+                        <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                          <p className="text-red-700 text-sm">{submitError}</p>
+                        </div>
+                      )}
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Business Name (if applicable)</label>
+                          <input
+                            type="text"
+                            name="businessName"
+                            placeholder="Your Business Name"
+                            value={formData.businessName}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
+                          <select
+                            name="businessType"
+                            value={formData.businessType}
+                            onChange={handleInputChange}
+                            required
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                          >
+                            <option value="">Select Service</option>
+                            <option value="business-establishment">Business Establishment</option>
+                            <option value="business-builders">Business Builders Package</option>
+                            <option value="optimum-funding">Optimum Funding Package</option>
+                            <option value="diamond-funding">Diamond Funding Package</option>
+                            <option value="ultimate-funding">Ultimate Funding Package</option>
+                            <option value="business-credit">Business Credit Services</option>
+                            <option value="funding-program">Basic Funding Program</option>
                         <option value="custom">Custom Package</option>
                       </select>
                     </div>
