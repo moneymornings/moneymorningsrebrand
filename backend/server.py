@@ -86,7 +86,80 @@ async def get_status_checks():
     status_checks = await db.status_checks.find().to_list(1000)
     return [StatusCheck(**status_check) for status_check in status_checks]
 
-# Money Mornings Application Endpoints
+# Email notification function
+async def send_email_notification(application_data: dict):
+    """Send email notification when new application is submitted"""
+    try:
+        # Email configuration from environment variables
+        smtp_server = os.environ.get('SMTP_SERVER', 'smtp.gmail.com')
+        smtp_port = int(os.environ.get('SMTP_PORT', '587'))
+        smtp_username = os.environ.get('SMTP_USERNAME', '')
+        smtp_password = os.environ.get('SMTP_PASSWORD', '')
+        notification_email = os.environ.get('NOTIFICATION_EMAIL', 'admin@moneymornings.com')
+        
+        if not smtp_username or not smtp_password:
+            logger.warning("Email credentials not configured - skipping notification")
+            return
+        
+        # Create email content
+        subject = f"New Application Submitted - {application_data['first_name']} {application_data['last_name']}"
+        
+        body = f"""
+        New Money Mornings Empire Application Submitted!
+        
+        APPLICANT DETAILS:
+        ==================
+        Name: {application_data['first_name']} {application_data['last_name']}
+        Email: {application_data['email']}
+        Phone: {application_data['phone']}
+        
+        BUSINESS DETAILS:
+        =================
+        Business Name: {application_data.get('business_name', 'Not provided')}
+        Service Interest: {application_data['service_interest'].replace('-', ' ').title()}
+        Funding Amount: {application_data.get('funding_amount', 'Not specified')}
+        Time in Business: {application_data.get('time_in_business', 'Not specified')}
+        
+        SUBMISSION INFO:
+        ===============
+        Application ID: {application_data['id']}
+        Submitted: {application_data['submission_date']}
+        Status: {application_data['status']}
+        
+        NEXT STEPS:
+        ===========
+        1. Review the application in your admin dashboard
+        2. Contact the applicant within 24 hours
+        3. Update the application status as needed
+        
+        Admin Dashboard: {os.environ.get('BACKEND_URL', 'http://localhost:8001')}/admin
+        
+        Best regards,
+        Money Mornings Empire System
+        """
+        
+        # Create message
+        msg = MimeMultipart()
+        msg['From'] = smtp_username
+        msg['To'] = notification_email
+        msg['Subject'] = subject
+        msg.attach(MimeText(body, 'plain'))
+        
+        # Send email
+        def send_sync_email():
+            with smtplib.SMTP(smtp_server, smtp_port) as server:
+                server.starttls()
+                server.login(smtp_username, smtp_password)
+                text = msg.as_string()
+                server.sendmail(smtp_username, notification_email, text)
+        
+        # Run in thread to avoid blocking
+        await asyncio.get_event_loop().run_in_executor(None, send_sync_email)
+        logger.info(f"Email notification sent for application {application_data['id']}")
+        
+    except Exception as e:
+        logger.error(f"Failed to send email notification: {str(e)}")
+        # Don't raise exception - email failure shouldn't break application submission
 @api_router.post("/applications/submit", response_model=ApplicationSubmission)
 async def submit_application(application: ApplicationSubmissionCreate):
     """Submit a new Money Mornings application"""
