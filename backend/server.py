@@ -32,6 +32,25 @@ app = FastAPI(title="Money Mornings API", version="1.0.0")
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
+# Security setup
+security = HTTPBasic()
+
+def verify_admin_credentials(credentials: HTTPBasicCredentials = Depends(security)):
+    """Verify admin credentials for dashboard access"""
+    admin_username = os.environ.get('ADMIN_USERNAME', 'admin')
+    admin_password = os.environ.get('ADMIN_PASSWORD', 'moneymornings2025!')
+    
+    is_correct_username = secrets.compare_digest(credentials.username, admin_username)
+    is_correct_password = secrets.compare_digest(credentials.password, admin_password)
+    
+    if not (is_correct_username and is_correct_password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid credentials",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+    return credentials.username
+
 
 # Define Models
 class StatusCheck(BaseModel):
