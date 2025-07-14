@@ -1053,6 +1053,9 @@ export const FooterSection = () => {
 // Application Modal Component
 export const ApplicationModal = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -1073,12 +1076,69 @@ export const ApplicationModal = ({ isOpen, onClose }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    onClose();
-    setStep(1);
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      // Prepare data for backend
+      const submissionData = {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        business_name: formData.businessName || null,
+        service_interest: formData.businessType,
+        funding_amount: formData.fundingAmount || null,
+        time_in_business: formData.timeInBusiness || null
+      };
+
+      // Get backend URL from environment
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
+      
+      // Submit to backend
+      const response = await fetch(`${backendUrl}/api/applications/submit`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData)
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Application submitted successfully:', result);
+        setSubmitSuccess(true);
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          onClose();
+          setStep(1);
+          setSubmitSuccess(false);
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            businessName: '',
+            businessType: '',
+            fundingAmount: '',
+            timeInBusiness: '',
+            monthlyRevenue: '',
+            creditScore: ''
+          });
+        }, 3000);
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Failed to submit application');
+      }
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      setSubmitError(error.message || 'Failed to submit application. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
