@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "name": "money-mornings-website",
+  "buildCommand": "yarn build",
+  "outputDirectory": "build",
+  "installCommand": "yarn install",
+  "framework": "create-react-app"
+}
