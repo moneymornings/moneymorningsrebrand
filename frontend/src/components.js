@@ -1287,57 +1287,60 @@ export const ApplicationModal = ({ isOpen, onClose }) => {
                             <option value="diamond-funding">Diamond Funding Package</option>
                             <option value="ultimate-funding">Ultimate Funding Package</option>
                             <option value="business-credit">Business Credit Services</option>
-                            <option value="funding-program">Basic Funding Program</option>
-                        <option value="custom">Custom Package</option>
-                      </select>
+                                <option value="custom">Custom Package</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Funding Amount Needed (if applicable)</label>
+                          <select
+                            name="fundingAmount"
+                            value={formData.fundingAmount}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                          >
+                            <option value="">Select Amount</option>
+                            <option value="50k-100k">$50K - $100K</option>
+                            <option value="100k-200k">$100K - $200K</option>
+                            <option value="200k-300k">$200K - $300K</option>
+                            <option value="300k+">$300K+</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Time in Business (if applicable)</label>
+                          <select
+                            name="timeInBusiness"
+                            value={formData.timeInBusiness}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                          >
+                            <option value="">Select Time</option>
+                            <option value="startup">Startup (Less than 1 year)</option>
+                            <option value="1-2years">1-2 Years</option>
+                            <option value="2-5years">2-5 Years</option>
+                            <option value="5+years">5+ Years</option>
+                            <option value="new-business">New Business Formation</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div className="flex space-x-4 mt-8">
+                        <button
+                          onClick={() => setStep(1)}
+                          disabled={isSubmitting}
+                          className="flex-1 bg-gray-200 text-gray-700 py-4 px-6 rounded-full font-semibold hover:bg-gray-300 transition-all disabled:opacity-50"
+                        >
+                          Back
+                        </button>
+                        <button
+                          onClick={handleSubmit}
+                          disabled={isSubmitting || !formData.businessType}
+                          className="flex-1 bg-green-500 text-white py-4 px-6 rounded-full font-semibold hover:bg-green-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                        >
+                          {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                        </button>
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Funding Amount Needed (if applicable)</label>
-                      <select
-                        name="fundingAmount"
-                        value={formData.fundingAmount}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      >
-                        <option value="">Select Amount</option>
-                        <option value="50k-100k">$50K - $100K</option>
-                        <option value="100k-200k">$100K - $200K</option>
-                        <option value="200k-300k">$200K - $300K</option>
-                        <option value="300k+">$300K+</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Time in Business (if applicable)</label>
-                      <select
-                        name="timeInBusiness"
-                        value={formData.timeInBusiness}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      >
-                        <option value="">Select Time</option>
-                        <option value="startup">Startup (Less than 1 year)</option>
-                        <option value="1-2years">1-2 Years</option>
-                        <option value="2-5years">2-5 Years</option>
-                        <option value="5+years">5+ Years</option>
-                        <option value="new-business">New Business Formation</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="flex space-x-4 mt-8">
-                    <button
-                      onClick={() => setStep(1)}
-                      className="flex-1 bg-gray-200 text-gray-700 py-4 px-6 rounded-full font-semibold hover:bg-gray-300 transition-all"
-                    >
-                      Back
-                    </button>
-                    <button
-                      onClick={handleSubmit}
-                      className="flex-1 bg-green-500 text-white py-4 px-6 rounded-full font-semibold hover:bg-green-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                    >
-                      Submit Application
-                    </button>
-                  </div>
-                </div>
+                  )}
+                </>
               )}
             </div>
           </motion.div>
