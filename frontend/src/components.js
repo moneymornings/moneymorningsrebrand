@@ -118,6 +118,14 @@ export const NavigationBar = ({ isMenuOpen, setIsMenuOpen, scrolled, scrollToSec
                   {item.name}
                 </button>
               ))}
+              <a
+                href={`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001'}/admin`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-left px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+              >
+                Admin Dashboard
+              </a>
               <button
                 onClick={() => setIsApplicationModalOpen(true)}
                 className="block w-full text-left bg-green-500 text-white px-3 py-3 rounded-full text-base font-semibold hover:bg-green-600 mt-2"
