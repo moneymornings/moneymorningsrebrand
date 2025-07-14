@@ -160,6 +160,7 @@ async def send_email_notification(application_data: dict):
     except Exception as e:
         logger.error(f"Failed to send email notification: {str(e)}")
         # Don't raise exception - email failure shouldn't break application submission
+# Money Mornings Application Endpoints
 @api_router.post("/applications/submit", response_model=ApplicationSubmission)
 async def submit_application(application: ApplicationSubmissionCreate):
     """Submit a new Money Mornings application"""
@@ -173,6 +174,10 @@ async def submit_application(application: ApplicationSubmissionCreate):
         
         if result.inserted_id:
             logger.info(f"New application submitted: {app_obj.email}")
+            
+            # Send email notification (non-blocking)
+            asyncio.create_task(send_email_notification(app_obj.dict()))
+            
             return app_obj
         else:
             raise HTTPException(status_code=500, detail="Failed to save application")
