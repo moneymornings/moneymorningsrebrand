@@ -305,10 +305,10 @@ async def get_application_stats():
         logger.error(f"Error getting application stats: {str(e)}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
-# Admin Dashboard HTML (Simple interface to view applications)
+# Admin Dashboard HTML (Simple interface to view applications) - PROTECTED
 @app.get("/admin", response_class=HTMLResponse)
-async def admin_dashboard():
-    """Simple admin dashboard to view applications"""
+async def admin_dashboard(username: str = Depends(verify_admin_credentials)):
+    """Secure admin dashboard to view applications - requires authentication"""
     html_content = """
     <!DOCTYPE html>
     <html>
