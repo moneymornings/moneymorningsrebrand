@@ -53,8 +53,8 @@ export const NavigationBar = ({ isMenuOpen, setIsMenuOpen, scrolled, scrollToSec
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
               <img 
-                src="https://customer-assets.emergentagent.com/job_funding-expert/artifacts/m82iu1j9_MONEYMORNINGSCOLOR%20copy.png" 
-                alt="Money Mornings" 
+                src="/money-mornings-logo.png" 
+                alt="Money Mornings Empire" 
                 className="h-12 w-auto"
               />
               <span className="text-xl font-bold text-gray-900">Money Mornings Empire</span>
