@@ -10,6 +10,10 @@ from pydantic import BaseModel, Field, EmailStr
 from typing import List, Optional
 import uuid
 from datetime import datetime
+import smtplib
+from email.mime.text import MimeText
+from email.mime.multipart import MimeMultipart
+import asyncio
 
 
 ROOT_DIR = Path(__file__).parent
