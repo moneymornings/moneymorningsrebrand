@@ -973,7 +973,7 @@ export const ContactSection = () => {
                 </div>
                 <div className="text-center">
                   <p className="text-sm text-gray-600">Email</p>
-                  <p className="text-xl font-semibold text-gray-900">info@moneymornings.com</p>
+                  <p className="text-xl font-semibold text-gray-900">info@moneymornings.cash</p>
                 </div>
               </div>
               <div className="flex items-center justify-center">
