@@ -964,7 +964,7 @@ export const ContactSection = () => {
                 </div>
                 <div className="text-center">
                   <p className="text-sm text-gray-600">Phone</p>
-                  <p className="text-2xl font-semibold text-gray-900">1 (877) 380-3417</p>
+                  <p className="text-2xl font-semibold text-gray-900">404.533.5698</p>
                 </div>
               </div>
               <div className="flex items-center justify-center">
