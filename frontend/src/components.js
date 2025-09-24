@@ -1348,4 +1348,4 @@ export const ApplicationModal = ({ isOpen, onClose }) => {
       )}
     </AnimatePresence>
   );
-};
+};// Trigger recompile
